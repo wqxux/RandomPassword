@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="RandomPassW.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RandomPassW"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" >
+            <TextBlock x:Name="textBlock" Text="随机密码：" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+            <ToggleSwitch Grid.Row="0" 
+                      x:Name="ToggleTheme" 
+                      VerticalAlignment="Bottom"
+                      HorizontalAlignment="Right"
+                      x:Uid="ToggleTheme"
+                      Toggled="ToggleTheme_OnToggled"
+                          />
+        </Grid>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="3" BorderThickness="{ThemeResource TextControlBorderThemeThickness}" 
+                    BorderBrush="{ThemeResource SystemControlForegroundChromeDisabledLowBrush}" Padding="5">
+            <TextBlock x:Name="newtextBlock" HorizontalAlignment="Right" Padding="0,0,10,0"
+                       FontFamily="{Binding ElementName=CmbFontFamily, Path=SelectedValue}" FontSize="28" />
+        </Border>
+
+        <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Vertical" VerticalAlignment="Bottom">
+            <Button x:Name="copy_Button" Content="复制" Click="copy_Button_Click"/>
+
+            <Button x:Name="newButton" Content="生成" Click="newButton_Click"></Button>
+        </StackPanel>
+
+        <Grid Grid.Row="3" Grid.Column="1" Padding="2">
+            <TextBlock Text="@PHone5y"  VerticalAlignment="Bottom" FontSize="10"></TextBlock>
+        </Grid>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" Padding="0,10,0,0">
+            <RadioButton x:Name="six_RadioButton" GroupName="NumberLen" Content="六位" Checked="six_RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="eight_RadioButton" GroupName="NumberLen" Content="八位" Checked="eight_RadioButton_Checked"/>
+            <RadioButton x:Name="ten_RadioButton" GroupName="NumberLen" Content="十位" Checked="ten_RadioButton_Checked" />
+            <RadioButton x:Name="tel_RadioButton" GroupName="NumberLen" Content="十二位" Checked="tel_RadioButton_Checked" />
+
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="3" Grid.Column="0"  Orientation="Vertical"  VerticalAlignment="Bottom">
+            <CheckBox x:Name="number_checkBox"  Content="数字" Checked="number_checkBox_Checked"   Unchecked="number_checkBox_Unchecked"  IsChecked="true"/>
+            <CheckBox x:Name="upperCase_checkBox" Content="大写字母" Checked="upperCase_checkBox_Checked" Unchecked="upperCase_checkBox_Unchecked" />
+            <CheckBox x:Name="lowerCase_checkBox" Content="小写字母" Checked="lowerCase_checkBox_Checked"  Unchecked="lowerCase_checkBox_Unchecked"/>
+            <CheckBox x:Name="specialChar_checkBox" Content="特殊字符" Checked="specialChar_checkBox_Checked" Unchecked="specialChar_checkBox_Unchecked" />
+        </StackPanel>
+
+
+    </Grid>
+</Page>
